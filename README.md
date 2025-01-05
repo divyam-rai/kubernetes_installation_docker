@@ -200,6 +200,12 @@ sudo kubeadm join $controller_private_ip:6443 --token $token --discovery-token-c
 kubeadm token create --print-join-command
 ```
 
+> In case you only have a single node, you would need to untaint the control panel node to allow for pods to be deployed on it.
+
+```bash
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+```
+
 ### To install metrics server
 
 ```bash
